@@ -1,0 +1,35 @@
+POST http://localhost:8080/basket
+Accept: application/json
+
+###
+
+POST http://localhost:8080/basket/add
+Accept: application/json
+Content-Type: application/json
+
+{
+  "uuid": "8e2e9104-dd95-44fe-b1ae-8cbd301b6588",
+  "code": "PEN"
+}
+
+###
+
+POST http://localhost:8080/basket/total
+Accept: application/json
+Content-Type: application/json
+
+{
+  "uuid": "8e2e9104-dd95-44fe-b1ae-8cbd301b6588"
+}
+
+###
+
+POST http://localhost:8080/basket/delete
+Accept: application/json
+Content-Type: application/json
+
+{
+  "uuid": "8e2e9104-dd95-44fe-b1ae-8cbd301b6588"
+}
+
+###

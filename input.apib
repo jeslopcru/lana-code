@@ -1,0 +1,91 @@
+FORMAT: 1A
+HOST: http://localhost:8080
+
+# Lana Store
+
+Simple checkout server and client that communicate over the network.
+
+## Group Basket
+
+Allows create a new basket, add products, get total amount and empty the basket.
+
+## Create a new basket [/basket]
+
+### Create new basket [POST]
+
+Creates a new basket.
+
++ Response 201 (application/json)
+
+        {
+          "response_message": "basket created",
+          "uuid": "1cd5b110-9ecf-45d7-a550-4024f003b991"
+        }
+## Add a product [/basket/add]
+
+It takes a JSON object with the product to add:
+
+    + uuid: VOUCHER (required, string) - Product code, must exist in the store.
+    + code: MUG (required, string) - Product code, must exist in the store.
+
+### Add Product [POST]
+
+This action allows add a product in the basket.
+
++ Request (application/json)
+
+            {
+                "uuid": "1cd5b110-9ecf-45d7-a550-4024f003b991"
+                "code": "PEN"
+            }
+            
++ Response 201 (application/json)
+
+            {
+              "response_message": "product added",
+              "uuid": "5e2a633b-6f1e-4751-9bad-f1da3d87107a"
+            }
+    
+           
+## Get the total amount [/basket/total]
+
+### Get total [POST]
+
+Get total amount with discounts.
+
++ Request (application/json)
+
+            {
+                "uuid": "1cd5b110-9ecf-45d7-a550-4024f003b991"
+            }
+
++ Response 200 (application/json)
+
+          {
+            "response_message": "basket total",
+            "products": {
+              "PEN": 1
+            },
+            "total": 5,
+            "uuid": "8e2e9104-dd95-44fe-b1ae-8cbd301b6588"
+          }
+          
+          
+## Empty the basket [/basket/delete]
+
+### Empty the basket [POST]
+
+Remove basket.
+
++ Request (application/json)          
+          
+          {
+            "uuid": "8e2e9104-dd95-44fe-b1ae-8cbd301b6588"
+          }
+          
++ Response 200 (application/json)
+          
+          {
+            "response_message": "basket empty",
+            "uuid": "8e2e9104-dd95-44fe-b1ae-8cbd301b6588"
+          }
